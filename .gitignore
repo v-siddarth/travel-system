@@ -4,3 +4,4 @@ Procfile
 POI_trial.ipynb
 setup.sh
 venv/
+.vscode/
