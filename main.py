@@ -36,17 +36,13 @@ streamlit_style = """
         font-size: 18px;
         font-weight: 600;
         }
-			  
+
 			</style>
 			"""
 st.markdown(streamlit_style, unsafe_allow_html=True)
 
-
-
-
 #import streamlit_folium 
 from streamlit_folium import folium_static
-
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
@@ -56,8 +52,6 @@ from streamlit_folium import folium_static
 
 # conn = init_connection()
 
-
-
 #importlib.import_module('FINAL')
 st.markdown('Please find the GitHub Repository for this project [here](https://github.com/ishijo/Travel_Itinerary_Generator).')
 st.image('./data/Cover-Img.png')
@@ -65,7 +59,6 @@ st.title('Personalised Travel Recommendation and Planner')
 
 pickle_in = open("lol.pkl","rb")
 load_lol=pickle.load(pickle_in)
-
 
 def welcome():
     return "Welcome All"
@@ -108,7 +101,6 @@ def output_main(Type,Duration,Budget,TYPE,Ques):
     print(output)
     return [output,info,map]
 
-
 def main():
 
     @st.cache(allow_output_mutation=True)
@@ -127,7 +119,7 @@ def main():
     Budget = int(Budget)
 
     col1, col2 = st.columns(2)
-    
+
     TYPE = col1.selectbox("Who are you travelling with?",lis2) ## already filled change
     Ques = col2.radio("Is covering maximum places a priority?",['Yes',"No"])
 
@@ -146,8 +138,30 @@ def main():
           else:
             st.subheader("Irrational. Please check your Inputs")
           return
-
         
+        # change code from chatgpt
+        # try:
+        #   RESULT = output_main(Type, Duration, Budget, TYPE, Ques)
+        # except Exception as e:
+        #   print(f"Error in output_main: {e}")
+
+        #   print("Printing details for debugging:")
+        #   print(f"Type: {Type}, Duration: {Duration}, Budget: {Budget}, TYPE: {TYPE}, Ques: {Ques}")
+  
+        #   print("Printing details within the FINAL function:")
+        #   try:
+        #     output, info, map = FINAL(Type, Duration, Budget, TYPE, Ques)
+        #   except Exception as final_error:
+        #     print(f"Error in FINAL function: {final_error}")
+    
+        #   if cutoff < 260:
+        #       st.subheader("Irrational. Try increasing your Budget or scaling down the Duration") 
+        #   else:
+        #       st.subheader("Irrational. Please check your Inputs")
+        #   return
+
+#  end of gpt code
+
         get_data().append({"Type": Type, "Duration": Duration,
                            "Budget": Budget, "TYPE": TYPE, "Ques": Ques})
         
@@ -191,9 +205,5 @@ def main():
     #   Before_df.append(This_time_df)
     #   Before_df.to_csv("data/MAIN_Data.csv",index=False)
 
-    
-    
 if __name__=='__main__':
     main()
-
-

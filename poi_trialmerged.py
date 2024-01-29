@@ -197,13 +197,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
 
     if (den==0):
       cos = 'lalala'
-
-
-
-
-  
-
-
     return cos
 
   print('CHECK1')
@@ -216,10 +209,7 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
 
     x = list(J_priority_df.iloc[i,1:]) # one row in the POI priority df
     y = val # user
-    
-    
     result = cencos_formula_h(x,y)
-
     cos_sim_list_h.append(result) 
     cos_sim_dict_h[i] = result
   ### Deciding Places
@@ -288,8 +278,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
   (sorted_selected_df)
   sorted_selected_df.to_csv('data/sorted_selected_df.csv')
   ### 
-
-
   ## Get Center Coordinates for initially Selected (based on vacation type input) POIs
   #(run for new inputs)
   #( result )
@@ -356,9 +344,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     distance = R * c
     return distance # km
-
-
-
   def dis_from_centre(centre,lis): # lis has to be a list of lists (2 ele each)
     hotel_centre_lis = []
     for i in range(0,len(lis)):
@@ -422,7 +407,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
     PER = PRODUCT/Budget ## CHANGE LATER
     PER_THRESHOLD = percent_check()
 
-    
     if (PER>PER_THRESHOLD):
       return False  
     elif (PER<=PER_THRESHOLD):
@@ -438,7 +422,7 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
       hid = sorted_by_des.iloc[j,0] # thankgod iloc not loc
       one_row.append(hotel_dis_result_dict[hid])
   # got one_row with some distances 
-
+  
     # DISTANCE
     dist_selected = [] 
     for j in dist_pri: #[0.5,0.75,1.2,3.5,6.0,10.0,20.0,35.0,50.0]
@@ -581,7 +565,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
     if ( timepoiplotlydf.iloc[i,0] in list(sorted_selected_df['PID']) ):
       main.append( list(timepoiplotlydf.iloc[i,:]) )
 
-
   main_df = pd.DataFrame(main)
   main_df.columns = ['PID','Start','Finish']
   #user_info()
@@ -612,9 +595,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
       centre_dict[k] = dis # REMEBER NOT OUR POI INDICES
     return centre_dict
 
-
-
-
   dummy_poi_dis = dis_from_centre2(nearest_coord,selected_coord_dict)
   dummy_poi_dis # distance from Actual hotel to selected pois
   ### Rings
@@ -625,7 +605,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
       if (lis[i] is not np.nan):
         new.append(lis[i])
     return new
-
 
   def filter_pois(df):
     s_lis = []
