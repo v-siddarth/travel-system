@@ -41,7 +41,7 @@ streamlit_style = """
 			"""
 st.markdown(streamlit_style, unsafe_allow_html=True)
 
-#import streamlit_folium 
+import streamlit_folium 
 from streamlit_folium import folium_static
 
 # Initialize connection.
@@ -64,7 +64,7 @@ def welcome():
     return "Welcome All"
 
 def output_main(Type,Duration,Budget,TYPE,Ques):
-    
+
     """Let's Authenticate the Banks Note 
     This is using docstrings for specifications.
     ---
@@ -92,9 +92,8 @@ def output_main(Type,Duration,Budget,TYPE,Ques):
     responses:
         200:
             description: The output values
-        
     """
-   
+
     #prediction=classifier.predict([[variance,skewness,curtosis,entropy]])
     #print(load_lol)
     output,info, map = FINAL(Type,Duration,Budget,TYPE,Ques) 
@@ -114,7 +113,7 @@ def main():
 
     Duration = st.slider("Duration (days)",min_value=1,max_value=40)
     Duration = int(Duration)
-    
+
     Budget = st.slider("Budget (INR)",min_value=200,max_value=150000,step=500)
     Budget = int(Budget)
 
@@ -138,7 +137,7 @@ def main():
           else:
             st.subheader("Irrational. Please check your Inputs")
           return
-        
+
         # change code from chatgpt
         # try:
         #   RESULT = output_main(Type, Duration, Budget, TYPE, Ques)

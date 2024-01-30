@@ -5,3 +5,4 @@ POI_trial.ipynb
 setup.sh
 venv/
 .vscode/
+__pycache__/

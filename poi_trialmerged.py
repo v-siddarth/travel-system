@@ -1,5 +1,3 @@
-
-
 def FINAL(Type,Duration,Budget,TYPE,Ques):
   print(Type,Duration,Budget,TYPE,Ques)
 
@@ -31,10 +29,8 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
     c = jaipur_poi_df.loc[POI,'POIs']
     return c
 
-
   jaipur_poi_df = pd.read_csv('data/jaipur-poi.csv')
   dist_only_matrix_df = pd.read_csv('data/dist_only_matrix.csv')
-
 
   jaipur_poi_df.set_index('PID',inplace=True)
   jaipur_poi_df.head()
@@ -241,8 +237,7 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
       sorted_selected.popitem()
       no_of_pois = len(sorted_selected)
       x=no_of_pois/Duration 
-
-      
+ 
   #print('Final no.: ',no_of_pois)
   # for k,v in sorted_selected.items(): 
   #   p = k+1
@@ -263,7 +258,6 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
   sorted_selected_df = pd.DataFrame(ll)
   sorted_selected_df.set_index(0,inplace=True)
   sorted_selected_df.columns = ['sorted priority']
-
 
   l1 = []
   l2 = []
@@ -315,10 +309,8 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
   #coord_pairs_df=pd.DataFrame(coord_pairs)
   #coord_pairs_df.to_csv('data/coord_pairs.csv')
 
-
   ## Hotel Assignment
 
-  
   #(run for changed inputs)
   #remove earlier ones CHANGE
 
@@ -692,14 +684,12 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
 
       length_of_this_ring = len(rings[5+i])
 
-
       dist_sorted = dict(sorted(store_dist.items(), key=lambda item: item[1],reverse=False)) #ascending
 
       if (flag==length_of_this_ring):
         break
     
       min = list(dist_sorted.keys())[flag] #pid
-
 
       if (min in chain(*main_routes)):
 
@@ -843,14 +833,14 @@ def FINAL(Type,Duration,Budget,TYPE,Ques):
           la1 = all_routes[i][j]+' (Anytime after '+time+' and before '+endtime[0]+' and '+endtime[1]+') '
           print(la1)
           big_la.append(str(la1))
-          
+   
     big_la.append('')
     print('')
   big_la
 
   #user_info()
   our_map = make_route(all=True)
-      
+
   # Deploying
   #pickle_out = open("lol.pkl","wb")
   #pickle.dump(big_la, pickle_out)
